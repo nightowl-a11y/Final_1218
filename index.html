@@ -18,7 +18,7 @@ button:disabled{opacity:.6;cursor:wait}#m{margin:14px 0 0;min-height:1.4em}#m.er
 <input id="c" placeholder="XXXX-XXXX-XXXX" aria-label="접속 코드" autofocus spellcheck="false">
 <button id="b">열기</button><p id="m" role="status"></p></form>
 <script>
-const SALT="9DlwpcN7l0BMmdhCDCThTA==",ITER=600000;
+const SALT="OiMBiUXFrRY0H1I3MjqhOQ==",ITER=600000;
 const b64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
 let key;
 async function dec(name){const r=await fetch("d/"+name,{cache:"no-store"});if(!r.ok)throw new Error("파일을 받지 못했어요 ("+r.status+")");
@@ -42,7 +42,7 @@ document.getElementById("f").onsubmit=async e=>{
    for(const [p,u] of Object.entries(url)){if(!p.startsWith(d))continue;const r=p.slice(d.length),name=p.split("/").pop();
     h=h.split('href="'+r+'" download>').join('href="'+u+'" download="'+name+'">')
        .split('href="'+r+'"').join(text[p]!==undefined?'href="'+u+'" target="_blank"':'href="'+u+'"')
-       .split('src="'+r+'"').join('src="'+u+'"')}
+       .split('src="'+r+'"').join('src="'+u+'"').split('poster="'+r+'"').join('poster="'+u+'"')}
    return h};
   const subs=Object.keys(text).filter(p=>p!==man.main).sort((a,b)=>b.split("/").length-a.split("/").length);
   // 하위 페이지는 새 탭으로 열림 → 그 안의 '메인으로 돌아가기' 링크는 탭을 닫아 원래 화면으로
